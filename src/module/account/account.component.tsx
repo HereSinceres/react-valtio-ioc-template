@@ -9,7 +9,7 @@ export const Account = (props: Props) => {
     const account = useInstance(AccountService);
     return (
         <>
-            <div>{account.state.userName}</div>
+            <div>{account.useSnapshot().userName}131312</div>
             <div
                 onClick={() => {
                     account.setName(`${Math.random()}`);

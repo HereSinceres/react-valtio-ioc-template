@@ -1,15 +1,15 @@
 import { proxy, useSnapshot } from 'valtio';
 
-export const state = proxy({
-    userName: '',
-    
-});
 export class AccountService {
-    get state() {
-        return useSnapshot(state);
+    state = proxy({
+        userName: '',
+    });
+    // react 组件中使用
+    useSnapshot() {
+        return useSnapshot(this.state);
     }
-    
+
     setName(name: string) {
-        state.userName = name;
+        this.state.userName = name;
     }
 }

@@ -7,18 +7,18 @@ import { TodoService } from './todo.service';
 type Props = {};
 
 const TodoViewComponent = (props: Props) => {
-  const todoService = useInstance(TodoService);
+  const todoService = useInstance(TodoService).useSnapshot();
   return (
       <>
-          <div>{todoService.state.count}</div>
+          <div>{todoService.count}</div>
       </>
   );
 };
 const TodoViewNameComponent = (props: Props) => {
-    const todoService = useInstance(TodoService);
+    const todoService = useInstance(TodoService).useSnapshot();
     return (
         <>
-            <div>{todoService.state.name}</div>
+            <div>{todoService.name}</div>
         </>
     );
 };
@@ -28,7 +28,7 @@ const TodoViewChangeNameComponent = (props: Props) => {
         <>
             <div onClick={()=>{
               todoService.setName(Math.random()+'');
-            }}> Change Name</div>
+            }}> Todo Name</div>
         </>
     );
 };
