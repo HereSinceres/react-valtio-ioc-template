@@ -2,9 +2,6 @@ import * as THREE from 'three';
 import { MTLLoader } from 'three/examples/jsm/loaders/MTLLoader';
 import { OBJLoader } from 'three/examples/jsm/loaders/OBJLoader';
 
-// require("three/examples/js/loaders/OBJLoader.js");
-// require("three/examples/js/loaders/MTLLoader.js");
-
 // The two loaders for material and object files, respectively.
 const mtlLoader = new MTLLoader();
 const textureLoader = new THREE.TextureLoader();
@@ -60,10 +57,12 @@ export function loadObject(
     }
 }
 
-// export function loadTexture(textureFile, onLoadCallback, onErrorCallback) {
-//     textureLoader.load(textureFile, onLoadCallback, undefined, onErrorCallback);
-// }
+export function loadTexture(
+    ...params: Parameters<THREE.TextureLoader['load']>
+) {
+    textureLoader.load(...params);
+}
 
-// export function loadMaterial(materialFile, onLoadCallback) {
-//     mtlLoader.load(materialFile, onLoadCallback);
-// }
+export function loadMaterial(...params: Parameters<MTLLoader['load']>) {
+    mtlLoader.load(...params);
+}

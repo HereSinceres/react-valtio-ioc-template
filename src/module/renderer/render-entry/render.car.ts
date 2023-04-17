@@ -1,14 +1,10 @@
-import bezier from 'adaptive-bezier-curve';
-import curve from 'adaptive-bezier-curve';
-import normalize from 'normalize-path-scale';
 import * as THREE from 'three';
 import BasicShaderFun from 'three-line-2d/shaders/basic';
-import { MTLLoader } from 'three/examples/jsm/loaders/MTLLoader';
-import { OBJLoader } from 'three/examples/jsm/loaders/OBJLoader';
 
 import carMaterial from '../../../assets/models/car.mtl?url';
 import carObject from '../../../assets/models/car.obj?url';
-import { ThreeLine2d } from '../lib/three-line-2d';
+import whiteCarMaterial from '../../../assets/models/white_car.mtl?url';
+import whiteCarObject from '../../../assets/models/white_car.obj?url';
 import { loadObject } from '../util/models';
 import { RenderEntry } from './render-entry';
 
@@ -25,8 +21,8 @@ export class RenderCar extends RenderEntry {
     constructor() {
         super();
         loadObject(
-            carMaterial,
-            carObject,
+            whiteCarMaterial,
+            whiteCarObject,
             {
                 x: 1,
                 y: 1,
@@ -34,7 +30,7 @@ export class RenderCar extends RenderEntry {
             },
             (object) => {
                 const mesh = object;
-                mesh.rotation.x = Math.PI / 2;
+                // mesh.rotation.x = Math.PI / 2;
                 // this.mesh.visible = STORE.options[properties.menuOptionName];
 
                 this.scene.add(mesh);
