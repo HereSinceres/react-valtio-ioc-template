@@ -1,7 +1,7 @@
 import { inject } from 'react-ioc';
 import * as THREE from 'three';
 
-import { SceneService } from './scene.service';
+import { SceneService } from '../scene.service';
 
 export class CameraService {
     private sceneService = inject(this, SceneService);

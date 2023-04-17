@@ -2,7 +2,7 @@ import React, { useEffect, useRef } from 'react';
 import { useInstance } from 'react-ioc';
 import * as THREE from 'three';
 
-import { RendererService } from './renderer.service';
+import { RendererService } from './core/renderer.service';
 
 type Props = {};
 
@@ -15,5 +15,9 @@ export const RendererComponent = (props: Props) => {
         }
     }, []);
 
-    return <div ref={divRef}></div>;
+    return (
+        <div>
+            <div ref={divRef}></div>
+        </div>
+    );
 };

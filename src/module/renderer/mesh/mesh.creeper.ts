@@ -47,7 +47,10 @@ export default class MeshCreeper {
         this.creeper.add(this.head);
         this.creeper.add(this.body);
         this.creeper.add(this.feet);
-        this.creeper.position.set(8,1,1); 
+        this.creeper.position.set(1,1,1); 
+    }
+
+    clear( ){
         // Clear
         this.creeper.clear();
     }
