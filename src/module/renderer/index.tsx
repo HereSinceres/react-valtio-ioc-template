@@ -4,6 +4,7 @@ import { provider, useInstance, useInstances } from 'react-ioc';
 import { CameraService } from './core/camera.service';
 import { RendererService } from './core/renderer.service';
 import { RenderAxesHelper } from './render-entry/render.axes-helper';
+import { RenderCar } from './render-entry/render.car';
 import { RenderCircle } from './render-entry/render.circle';
 import { RenderCreeper } from './render-entry/render.creeper';
 import { RenderCube } from './render-entry/render.cube';
@@ -18,6 +19,7 @@ const App = () => {
         RenderLight, 
         // RenderCircle,
     // RenderCube,
+    RenderCar,
          RenderCreeper, 
          RenderPlane,
          RenderAxesHelper,
@@ -35,5 +37,6 @@ export const Renderer = provider(
     RenderAxesHelper,
     RenderPlane,
     RenderLine,
+    RenderCar,
     RendererService
 )(App);
