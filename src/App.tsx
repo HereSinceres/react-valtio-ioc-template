@@ -5,6 +5,7 @@ import { useState } from 'react';
 
 import reactLogo from './assets/react.svg';
 import { Account } from './module/account/account.component';
+import { ValtioDemo } from './module/common/base/ValtioDemo';
 import { Renderer } from './module/renderer';
 import { Todo } from './module/todo';
 
@@ -13,7 +14,8 @@ function App() {
 
     return (
         <div className='App'>
-            <Renderer />
+            {/* <Renderer /> */}
+            <ValtioDemo />
         </div>
     );
 }

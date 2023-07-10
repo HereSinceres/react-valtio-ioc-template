@@ -4,11 +4,12 @@ import { OrbitControls } from 'three/examples/jsm/controls/OrbitControls';
 
 import { SceneService } from '../scene.service';
 import { CameraService } from './camera.service';
+import { RaycasterService } from './raycaster.service';
 
 export class RendererService extends THREE.WebGLRenderer {
     private sceneService = inject(this, SceneService);
     private cameraService = inject(this, CameraService);
-
+    private raycasterService = inject(this, RaycasterService);
     cameraControl = new OrbitControls(
         this.cameraService.camera,
         this.domElement
@@ -36,6 +37,7 @@ export class RendererService extends THREE.WebGLRenderer {
     update() {
         let startTime = performance.now();
         requestAnimationFrame(this.update.bind(this));
+        this.raycasterService.detection();
         this.cameraControl.update(); // 需設定 update
         this.render(this.sceneService.scene, this.cameraService.camera);
         let endTime = performance.now();

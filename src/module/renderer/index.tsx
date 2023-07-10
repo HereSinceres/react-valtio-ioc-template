@@ -2,6 +2,7 @@ import React from 'react';
 import { provider, useInstance, useInstances } from 'react-ioc';
 
 import { CameraService } from './core/camera.service';
+import { RaycasterService } from './core/raycaster.service';
 import { RendererService } from './core/renderer.service';
 import { RenderAxesHelper } from './render-entry/render.axes-helper';
 import { RenderCar } from './render-entry/render.car';
@@ -16,20 +17,21 @@ import { SceneService } from './scene.service';
 
 const App = () => {
     useInstances(
-        RenderLight, 
+        RenderLight,
         // RenderCircle,
-    // RenderCube,
-    RenderCar,
-         RenderCreeper, 
-         RenderPlane,
-         RenderAxesHelper,
+        // RenderCube,
+        RenderCar,
+        RenderCreeper,
+        RenderPlane,
+        // RenderAxesHelper
         //  RenderLine
-         );
+    );
     return <RendererComponent />;
 };
 export const Renderer = provider(
     SceneService,
     CameraService,
+    RaycasterService,
     RenderLight,
     RenderCircle,
     RenderCube,

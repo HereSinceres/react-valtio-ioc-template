@@ -32,7 +32,7 @@ export class RenderCar extends RenderEntry {
                 const mesh = object;
                 // mesh.rotation.x = Math.PI / 2;
                 // this.mesh.visible = STORE.options[properties.menuOptionName];
-
+                mesh.name ='car';
                 this.scene.add(mesh);
             }
         );
