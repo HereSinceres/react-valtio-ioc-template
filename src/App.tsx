@@ -5,9 +5,9 @@ import { useState } from 'react';
 
 import reactLogo from './assets/react.svg';
 import { Account } from './module/account/account.component';
-import { ValtioDemo } from './module/common/base/ValtioDemo';
 import { Renderer } from './module/renderer';
 import { Todo } from './module/todo';
+import { ValtioDemo } from './module/user-info';
 
 function App() {
     const [count, setCount] = useState(0);
@@ -15,7 +15,10 @@ function App() {
     return (
         <div className='App'>
             {/* <Renderer /> */}
-            <ValtioDemo />
+            {/* <ValtioDemo /> */}
+            <Account />
+            <hr />
+            <Todo /> 
         </div>
     );
 }

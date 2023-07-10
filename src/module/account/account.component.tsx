@@ -9,13 +9,13 @@ export const Account = (props: Props) => {
     const account = useInstance(AccountService);
     return (
         <>
-            <div>{account.useSnapshot().userName}131312</div>
+            <div>{account.useSnapshot().tk}131312</div>
             <div
                 onClick={() => {
-                    account.setName(`${Math.random()}`);
+                    account.setTk(`Tk:${Math.random()}`);
                 }}
             >
-                随机username
+                随机Tk
             </div>
         </>
     );

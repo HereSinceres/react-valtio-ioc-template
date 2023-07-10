@@ -1,7 +1,7 @@
 import { provider, useInstance } from 'react-ioc';
 
-import { StateType, useComputedViewStore } from '../valtio.base.store';
-import { UserInfoService, useComputedInfoDemeo } from './UserInfoService';
+import { StateType, useComputedViewStore } from '../common/base/valtio.base.store';
+import { UserInfoService, useComputedInfoDemeo } from './user.service';
 
 type Props = {};
 export const ViewAgeDemo = (props: Props) => {

@@ -1,19 +1,23 @@
 import { useInstance } from 'react-ioc';
 import { useSnapshot as _useSnapshot, proxy } from 'valtio';
 
-export abstract class ValtioBaseStore<TState extends object, TAction> {
+export abstract class ValtioBaseStore<TState extends object> {
     constructor(protected state: TState) {
         this.state = proxy(state);
     }
+    // 调用只能在action里
+    get _state() {
+        return this.state;
+    }
+    // 调用只能funciton component或者hook里
     useSnapshot = () => {
         return _useSnapshot(this.state);
     };
 }
 
 interface IValtioBaseStore<TState extends object, TAction> {
-    new (state: TState): ValtioBaseStore<TState, TAction>;
+    new (state: TState): ValtioBaseStore<TState>;
 }
-
 
 /**
  * 不要使用这个对象，监听了所有状态的变更，虽然可以简化调用
@@ -22,7 +26,7 @@ interface IValtioBaseStore<TState extends object, TAction> {
  * @template TState
  * @template TAction
  * @param {IValtioBaseStore<TState, TAction>} ClassName
- * @return {*} 
+ * @return {*}
  */
 export function useComputedViewStore<TState extends object, TAction>(
     ClassName: IValtioBaseStore<TState, TAction>
@@ -36,11 +40,3 @@ export function useComputedViewStore<TState extends object, TAction>(
         ...props,
     };
 }
-
-export type StateType = {
-    name: string;
-    age: number;
-    hobby: string[];
-};
-
-

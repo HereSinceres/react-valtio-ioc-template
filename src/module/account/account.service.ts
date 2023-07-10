@@ -1,15 +1,19 @@
 import { proxy, useSnapshot } from 'valtio';
 
-export class AccountService {
-    state = proxy({
-        userName: '',
-    });
-    // react 组件中使用
-    useSnapshot() {
-        return useSnapshot(this.state);
+import { ValtioBaseStore } from '../common/base/valtio.base.store';
+
+export type StateType = {
+    tk: string;
+};
+
+export class AccountService extends ValtioBaseStore<StateType> {
+    constructor() {
+        super({
+            tk: '',
+        });
     }
 
-    setName(name: string) {
-        this.state.userName = name;
+    setTk(name: string) {
+        this.state.tk = name;
     }
 }

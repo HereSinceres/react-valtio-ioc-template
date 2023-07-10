@@ -1,11 +1,14 @@
 import { useInstance } from 'react-ioc';
 
-import { StateType, ValtioBaseStore } from '../valtio.base.store';
+import { ValtioBaseStore } from '../common/base/valtio.base.store';
 
-export class UserInfoService extends ValtioBaseStore<
-    StateType,
-    UserInfoService
-> {
+export type StateType = {
+    name: string;
+    age: number;
+    hobby: string[];
+};
+
+export class UserInfoService extends ValtioBaseStore<StateType> {
     constructor() {
         super({
             name: '默认',
@@ -27,5 +30,5 @@ export class UserInfoService extends ValtioBaseStore<
 
 export const useComputedInfoDemeo = () => {
     const { age, hobby } = useInstance(UserInfoService).useSnapshot();
-    return `${age} ${hobby.join(',')}`
+    return `${age} ${hobby.join(',')}`;
 };

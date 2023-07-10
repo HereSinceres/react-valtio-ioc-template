@@ -1,33 +1,38 @@
-import { inject } from 'react-ioc';
+import { inject, useInstance } from 'react-ioc';
 import { proxy, useSnapshot } from 'valtio';
 
 import { Account } from '../account/account.component';
 import { AccountService } from '../account/account.service';
+import { ValtioBaseStore } from '../common/base/valtio.base.store';
 
-export class TodoService {
+export type StateType = {
+    count: number;
+    name: string;
+};
+
+export class TodoService extends ValtioBaseStore<StateType> {
     account = inject(this, AccountService);
 
-    state = proxy({
-        count: 0,
-        name: 'foo',
-    });
-
-    // react 组件中使用, 这里如果需要根据其他模块数据刷新，需要在这里使用其他模块的useSnapshot
-    useSnapshot() {
-        const value = useSnapshot(this.state);
-        const account = this.account.useSnapshot();
-        return {
-            ...value,
-            count: value.count + account.userName,
-        };
+    constructor() {
+        super({
+            count: 0,
+            name: '',
+        });
     }
+
     inc() {
         ++this.state.count;
     }
     setName(name: string) {
-        this.account.setName(
-            'TodoAccount' + Math.random() + this.account.state.userName
+        // TODO:如何使用另一个service里面的数据呢
+        this.account.setTk(
+            'TodoAccount' + Math.random() + this.account._state.tk
         );
         this.state.name = name;
     }
+}
+export const useComputedTwoServcice  = ()=>{
+    const state = useInstance(AccountService).useSnapshot();
+    const todoState = useInstance(TodoService).useSnapshot();
+    return `${state.tk} ${todoState.name}`;
 }
